@@ -15,6 +15,8 @@ void	ft_putstr(char *str);
 
 #include <unistd.h>
 
+/*
+// using i to iterate through the input
 void	ft_putstr(char *str)
 {
 	int i = 0;
@@ -24,10 +26,42 @@ void	ft_putstr(char *str)
 		i++;
 	}
 }
+*/
+
+/*
+// using pointer
+void	ft_putstr(char *str)
+{
+	while (*str)
+		write(1, str++, 1);
+}
+
+
+void	ft_putstr(char *str)
+{
+	while (*str != '\0')
+	{
+		write(1, str, 1);
+		str++;
+	}
+}
+*/
+
+//using 2 pointers:
+void	ft_putstr(char *str)
+{
+	char	*end = str;
+	while (*end)
+		end++;
+	write(1, str, end - str);
+}
 
 int	main(void)
 {
-	char	str[] = "hello";
+	char	str[] = "hi";
+	char	*message = "hello world";
 	ft_putstr(str);
+	write(1, "\n", 1);
+	ft_putstr(message);
 	return (0);
 }
