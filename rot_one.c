@@ -50,6 +50,7 @@ int main(int ac, char **av)
 	return (0);
 }
 
+
 //2nd solution:
 /*
 void	ft_putchar(char c)
@@ -71,7 +72,6 @@ void	rotone(char *s)
 	}
 }
 
-
 int main(int ac, char **av)
 {
 	if (ac == 2)
@@ -79,5 +79,34 @@ int main(int ac, char **av)
 	ft_putchar('\n');
 	return(0);
 }
-
+*/
+/*
+// 3rd solution:
+char	get_char(char s)
+{
+	char	c;
+	c = s;
+	if (c == 'z')
+		c = 'a';
+	else if (c == 'Z')
+		c = 'A';
+	else if ((s >= 'a' && s <= 'y') || (s >= 'A' && s <= 'Y'))
+		c = s + 1;
+	return (c);
+}
+int main(int ac, char **av)
+{
+	char	c;
+	if (ac == 2)
+	{
+		while (*av[1])
+		{
+			c = get_char(*av[1]);
+			write(1, &c, 1);
+			av[1]++;
+		}
+	}
+	write(1, "\n", 1);
+	return (0);
+}
 */

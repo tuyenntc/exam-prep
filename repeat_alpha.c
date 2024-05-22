@@ -4,9 +4,7 @@ Expected files   : repeat_alpha.c
 Allowed functions: write
 --------------------------------------------------------------------------------
 
-Write a program called repeat_alpha that takes a string and display it
-repeating each alphabetical character as many times as its alphabetical index,
-followed by a newline.
+Write a program called repeat_alpha that takes a string and display it repeating each alphabetical character as many times as its alphabetical index, followed by a newline.
 
 'a' becomes 'a', 'b' becomes 'bb', 'e' becomes 'eeeee', etc...
 
@@ -31,6 +29,36 @@ $>
 */
 
 #include <unistd.h>
+
+int	get_letter_count(char c)
+{
+	if (c >= 'a' && c <= 'z')
+		return (c - 'a' + 1);
+	else if (c >= 'A' && c <= 'Z')
+		return (c - 'A' + 1);
+	return (1);
+}
+
+int main(int ac, char **av)
+{
+	int	i = 0;
+	int	count;
+	if (ac == 2)
+	{
+		while (av[1][i])
+		{
+			count = get_letter_count(av[1][i]);
+			while (count--)
+				write(1, &av[1][i], 1);
+			i++;
+		}
+	}
+	write(1, "\n", 1);
+	return (0);
+}
+
+
+
 /*
 using 2 loops: for upper-case letters: -64 to get the alphabetical index
 A --> 65 --> 65 - 64 = 1
@@ -76,6 +104,7 @@ int main(int ac, char **av)
 	return (0);
 }
 */
+/*
 //solution 2:
 
 void	ft_putchar_n(char c, int n)
@@ -108,3 +137,5 @@ int main(int ac, char **av)
 	write(1, "\n", 1);
 	return (0);
 }
+
+*/
